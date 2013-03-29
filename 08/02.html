@@ -1,0 +1,15 @@
+<h2 id='ini_semua_adalah_tentang_menggabungkan_halhal'>Ini semua adalah tentang menggabungkan hal-hal</h2>
+
+<p>Beberapa hal indah dapat dikerjakan dengan hal-hal sederhana pada Ruby, terlebih jika kamu gabungkan mereka menjadi sesuatu yang baru. Di sini kita punya blog yang terbuat dari array class. Dan sebenarnya Ruby sangat cocok dengan mahluk-mahluk seperti itu.</p>
+
+<p>Ini beberapa hal yang bisa kamu lakukan dengan array blogmu:</p>
+
+<ul>
+<li>Kamu dapat mengurut isi blogmu dari yang dahulu hingga terkini. Kamu dapat melakukannya dengan cara ini: <code>blog.sort_by { |entry| entry.time }.reverse</code><br /> Lihat <a href='http://ruby-doc.org/core/Enumerable.html#method-i-sort_by'>referensi sort_by</a> untuk penjelasan lebih lanjut.</li>
+
+<li>Jika kamu ingin mencari blog tentang &#8220;kota&#8221;: <code>blog.find_all { |entry| entry.fulltext.match(/kota/i) }</code><br /> Coba baca tentang <a href='http://ruby-doc.org/core/Enumerable.html#method-i-find_all'>find_all</a> dan <a href='http://ruby-doc.org/core/String.html#method-i-match'>match</a> untuk mencari bagaimana cara methodnya bekerja. Juga, garis miring seperti <code>/kota/i</code> adalah objek Regexp (regular expression) yang digunakan untuk mencocokkan kata-kata.</li>
+
+<li>Coba tambah pos baru dengan <code>blog &lt;&lt; &lt;pos_baru&gt;</code> dan cek <a href='http://ruby-doc.org/core/Array.html#method-i-3C-3C'>dokumentasi method &#171;</a></li>
+</ul>
+
+<p>Kamu bisa lihat-lihat method yang ada pada Ruby di <a href='http://ruby-doc.org/'>ruby-doc.org</a>. Salah satu method yang berguna (mungkin saya pakai method ini paling sering) adalah <code>map</code>. Ketik: <code>blog.map { |entry| entry.mood }</code></p>

@@ -1,0 +1,20 @@
+<h2 id='di_ruby_def_makan_berarti_define_makan_sebuah_method'>Di Ruby, def makan berarti define makan (sebuah method)!</h2>
+
+<p>Hai, ok kamu selesai membuat methodmu sendiri. Kamu mulai dengan <code>def</code>, diikuti dengan nama methodnya. Kemudian ada jajaran argumen yang dibutuhkan method. Ini ngga menakutkan atau berbahaya!</p>
+
+<p>Yang kita perlu hanya isi method dengan kode Ruby dan tutup dengan <code>end</code></p>
+
+<p>Ini kodenya:</p>
+
+<p><code>
+def load_comics( path )
+  comics = {}
+  File.foreach(path) do |line|
+    name, url = line.split(&#39;: &#39;)
+    comics[name] = url.strip
+  end
+  comics
+end
+</code></p>
+
+<p>Kamu tidak perlu atur indentasi jika kamu tidak mau. Saya lakukan itu supaya kodenya mudah dibaca.</p>

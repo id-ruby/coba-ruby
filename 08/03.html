@@ -1,0 +1,18 @@
+<h2 id='lihat_muka_dia_lagi__perubahan_sudah_dimulai'>Lihat muka dia lagi &#8211; Perubahan sudah dimulai</h2>
+
+<p>Method <code>map</code> mengiterasi array dan mengganti setiap item dengan sesuatu yang baru. Misal kamu ingin mengganti semua isi blogmu dengan nama <em>Bruce Willis</em>. Lakukan saja: <code>blog.map { &quot;Bruce Willis&quot; }</code></p>
+
+<p>Karena block selalu mengembalikan string &#8220;Bruce Willis&#8221;, itulah yang kamu dapat. Di kode yang kamu gunakan, <code>entry</code> yang ditukar hanya <code>entry.mood</code>.</p>
+
+<p>Sekarang, saya ingin kamu membuat <code>Popup</code> dengan isi blogmu. Saya tidak akan memberimu semua kode. Saya memberimu sebagian saja.</p>
+
+<p><code>
+blog.each do |entry|
+  h2 entry.title
+  p entry.fulltext
+end
+</code></p>
+
+<p>Sekarang, saya ingin kamu taruh kode popup di sekitarnya dan isi <code>h1</code> dengan nama blogmu. Supaya lebih keren, tambahkan waktu pembuatan untuk setiap isi.</p>
+
+<p>Ketika kamu sudah siap melanjutkan perjalanan, ketik <code>lanjut</code>.</p>
