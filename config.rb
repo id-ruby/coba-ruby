@@ -4,7 +4,7 @@
 
 # Time.zone = "UTC"
 
-host = "nyan.catcyb.org"
+host = "id-ruby.org"
 set :share_url, "http://#{host}/coba-ruby/"
 set :default_meta_description, "Punya 15 menit? Mari mencoba bahasa pemrograman Ruby sekarang! Kelebihan Ruby terletak pada kesederhanaannya dibalik kemampuannya."
 
@@ -22,7 +22,7 @@ end
 
 activate :deploy do |deploy|
   deploy.method = :git
-  deploy.remote = "https://github.com/catcyborg/coba-ruby.git"
+  deploy.remote = "https://github.com/id-ruby/coba-ruby.git"
   deploy.branch = "gh-pages"
 end
 
