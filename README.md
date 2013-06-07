@@ -1,6 +1,7 @@
 # Coba Ruby
 
 Situs ini menggunakan [Middleman](http://middlemanapp.com).
+Kode untuk mengevaluasi jawaban ada di [sini](https://github.com/catcyborg/mengenal-ruby-eval).
 
 ## Setup
 
