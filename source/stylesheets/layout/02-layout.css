@@ -1,0 +1,173 @@
+/* 
+
+  
+  |Globals
+
+*/
+
+  html, body, #page{
+    height: 100%;
+  }
+
+  body{
+    background: url('../../images/patterns/subtle_dots.png');
+  }
+
+  header{
+    margin: 1.8em 0 1.95em ;
+    border-bottom: dotted 0.05em #BBB;
+  }
+
+  header h1{
+    display: inline;
+    margin-left: 8px;
+  }
+  
+  #instruction-pane{
+    float: left;
+    width: 40%;
+    padding: 0 48px 0 32px;    
+
+    height: 100%;
+
+    overflow: auto;
+  }
+
+  #action-pane{
+    float: left;
+    width: 60%;
+    height: 100%;
+    padding: 1.8em 32px 0 0;
+    overflow: auto;
+  }
+
+  #action-pane .input{
+    height: 40%;
+
+    clear: both;
+  }
+
+  #action-pane .input textarea, #action-pane .output textarea{
+    
+    width: 100%;
+    height: 100%;
+    display: block;
+    float: left;
+
+    color: #777;
+
+    font-family: 'Droid Sans Mono', monospace;    
+
+    margin-top: 0;
+  }
+
+
+  #action-pane .output{
+    clear: both;
+  }
+
+  footer{
+    margin: 6.3em 0 1.8em;
+    padding-bottom: 1.8em;
+  }
+
+  footer.compact{
+    display: none;
+  }
+
+  footer img{
+    height: 1.8em;
+    display: block;
+    float: left;
+    margin-right: 27px;
+  }
+
+
+
+/* 
+
+
+  |Media Queries
+
+*/
+
+  @media only screen and (min-width: 1400px) {
+
+    
+
+  }
+
+  @media only screen and (max-width: 1400px) {
+
+    header{
+      margin: 1.75em 0 2.006em ;
+      border-bottom: dotted 0.1em #BBB;
+    }
+
+    #action-pane{
+      padding-top: 1.75em;
+    }
+
+
+    footer{
+      margin: 7em 0 1.75em;
+    }
+
+    footer img{
+      height: 1.75em;
+    }
+
+
+  }
+
+  @media only screen and (max-width: 1200px) and (min-width: 900px){
+    
+    #instruction-pane{
+      width: 45%;
+    }
+
+    #action-pane{
+      width: 55%;      
+    }
+
+  }
+
+  @media only screen and (max-width: 900px){
+
+    html, body, #page{
+      /*height: auto;*/
+    }
+
+    #instruction-pane{
+      width: 100%;
+      height: auto;
+      padding: 0 24px;
+      margin-bottom: 1.75em;
+      overflow: none; 
+    }
+
+    #action-pane{
+      width: 100%;
+      height: auto;
+
+      padding: 0 24px 0em; 
+
+      overflow: none; 
+    }
+
+    #action-pane .input textarea, #action-pane .output textarea{
+      height: auto;
+    }
+
+    footer{
+      display: none;
+    }
+
+    footer.compact{
+      display: block;
+      width: 100%;
+      float: left;
+      padding: 0em 24px 1.75em;
+    }
+
+  }
