@@ -70,13 +70,12 @@
 	b, dt, legend { font-weight: bold; }
 	cite, dfn, i { font-style: italic; }
 	code, kbd, samp, pre, tt, var { font-family: 'Inconsolata', monospace; color: #111; }
-  code pre{
+  pre{
     background-color: #EEE;
     border: 0.05em solid #DDD;
-    padding: 0.85em 8px;
+    padding: 0.85em 16px;
     overflow: auto;
     display: block;
-    margin-bottom: 1.8em;
   }
 	del { text-decoration: line-through; }
 	ins { color: #f00; }	
@@ -111,10 +110,9 @@
 
     small { font-size: 0.875em; }
 
-    code{
+    pre{
       border: 0.1em solid #DDD;
       padding: 0.775em 8px;
-      margin-bottom: 1.75em;
     }
 
   }
