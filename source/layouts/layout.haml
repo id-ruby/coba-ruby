@@ -38,10 +38,36 @@
           %a{ :href => "http://id-ruby.org" }
             %img{ :src => "#{asset_root}/images/logo-id-ruby.png", :alt => "ID Ruby", :title => "Ruby Indonesia" }
 
+          %a{:href => 'javascript:;', class: "js-share-facebook share share-facebook", "data-url" => share_url}
+            %img{ :src => "#{asset_root}/images/socialmediaicons/facebook-48x48.png" }
+          %a{:href => 'javascript:;', class: "js-share-twitter share share-twitter", "data-url" => share_url, "data-lang" => "id", "data-count" => "none", "data-hashtags" => "CobaRuby"}
+            %img{ :src => "#{asset_root}/images/socialmediaicons/twitter-48x48.png" }
           / %a{ :onclick => "return Share.me(this);" :target => "_blank" :href => "http://www.facebook.com/sharer/sharer.php?s=100&amp;p%5Btitle%5D=Coba Ruby&amp;p%5Bsummary%5D=12&ndash;Punya 15 menit? Mari mencoba bahasa pemrograman Ruby sekarang!&amp;p%5Burl%5D=http://id-ruby.org/coba-ruby" }
           /   %img{ :src => "images/socialmediaicons/facebook-48x48.png" }
           / %a{ :onclick => "return Share.me(this)" :target => "_blank" :href => "https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fid-ruby.org/coba-ruby%2F_display%2F&amp;text=Coba Ruby Yuk!&amp;url=http://id-ruby.org/coba-ruby" }
           /   %img{ :src => "images/socialmediaicons/twitter-48x48.png" }
+      %section#action-pane        
+        #tab-code-editor.tab-item.tab-item-selected
+          .input
+            .code-editor-wrapper
+              / #code-editor
+              %h4.remove-bottom Masukan
+              %small.remove-bottom Masukan potongan kode Ruby di sini dan tekan tombol jalankan untuk melihat hasilnya.
+              %textarea
+            .btn-run-wrapper
+              = link_to "Jalankan", 'javascript:;', class: "btn-run medium button right quarter-width"
+          .code-tools.output            
+            .code-output
+              %h4 Keluaran
+              %pre
+                %code#run-output
+        #tab-popup.tab-item
+          .popup-wrapper
+            %p
+              Ini Tempat Popup Keluar
+              = link_to "[Hapus Popup]", 'javascript:;', class: "js-clear-popup"
+            %hr
+            #popup
     = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"
     = javascript_include_tag "http://nyan.catcyb.org/mengenal-ruby/js/vendor/editor/ace.js", charset: "utf-8"
     = javascript_include_tag "#{asset_root}/javascripts/all.js"

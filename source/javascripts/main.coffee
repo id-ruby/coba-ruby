@@ -85,24 +85,24 @@ ChallengeNavigateToPath = (challengePath) ->
 
 
 # Snippet Editor
-editor = null
-editorInitialized = false
-SnippetEditorSetValue = (snippet) ->
-  if editorInitialized
-    editor.getSession().setValue snippet
-  else
-    $("#snippet-runner-code-content").html "<pre>" + snippet + "</pre>"
-SnippetEditorGetValue = ->
-  if editorInitialized
-    editor.getSession().getValue()
-  else
-    $("#snippet-runner-code-content").text()
-SnippetEditorInitialize = ->
-  if window.ace
-    editor = ace.edit("code-editor")
-    editor.setTheme "ace/theme/solarized_light"
-    editor.getSession().setMode "ace/mode/ruby"
-    editorInitialized = true
+# editor = null
+# editorInitialized = false
+# SnippetEditorSetValue = (snippet) ->
+#   if editorInitialized
+#     editor.getSession().setValue snippet
+#   else
+#     $("#snippet-runner-code-content").html "<pre>" + snippet + "</pre>"
+# SnippetEditorGetValue = ->
+#   if editorInitialized
+#     editor.getSession().getValue()
+#   else
+#     $("#snippet-runner-code-content").text()
+# SnippetEditorInitialize = ->
+#   if window.ace
+#     editor = ace.edit("code-editor")
+#     editor.setTheme "ace/theme/solarized_light"
+#     editor.getSession().setMode "ace/mode/ruby"
+#     editorInitialized = true
 
 
 
@@ -113,7 +113,7 @@ snippetRequestError = $("#snippet-request-error-template").text()
 $runner = $("#snippet-runner")
 $("#snippet-request-error-template").remove()
 
-SnippetEditorInitialize()
+# SnippetEditorInitialize()
 ChallengeInitialize()
 
 $(".btn-run").on 'click', ->
@@ -158,6 +158,7 @@ $('.tab-button').on 'click', ->
 $('.js-clear-popup').on 'click', -> $('#popup').empty()
 
 $('.js-share-facebook').on 'click', ->
+  console.log("hoho")
   sharer = "https://www.facebook.com/sharer/sharer.php?u=";
   window.open(sharer + $(this).data('url'), 'sharer', 'width=626,height=436');
 
