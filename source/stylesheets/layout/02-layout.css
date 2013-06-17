@@ -13,6 +13,38 @@
     background: url('../../images/patterns/subtle_dots.png');
   }
 
+  #code-loading-placebo, #instruction-loading-placebo{
+    background: #FFF;
+    padding: 8px 8px 0;
+    display: block;
+    width: 50px;    
+
+    /*border: 1px solid #eee;*/
+
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+
+    display: none;
+    
+  }
+
+  #code-loading-placebo{
+    margin-right: 16px;
+    margin-top: 0.75em;
+  }
+
+  #instruction-loading-placebo{
+    display: block;
+    position: absolute;
+    left: 50%;
+    margin-left: -25px;
+
+    top: 14.4em;
+
+    display: none;
+  }
+
   header{
     margin: 1.8em 0 1.95em ;
     border-bottom: dotted 0.05em #BBB;
@@ -26,18 +58,24 @@
   #instruction-pane{
     float: left;
     width: 40%;
-    padding: 0 16px 0 32px;    
+    padding: 0 24px 0 32px;    
 
     height: 100%;
 
     overflow: auto;
+
+    position: relative;
+  }
+
+  #code-prefill{
+    display: none;
   }
 
   #action-pane{
     float: left;
     width: 60%;
     height: 100%;
-    padding: 1.8em 32px 0 16px;
+    padding: 1.8em 32px 0 24px;
     overflow: auto;
   }
 

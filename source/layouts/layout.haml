@@ -12,6 +12,8 @@
     %link{ :href => 'http://fonts.googleapis.com/css?family=Open+Sans:400,700,600', :rel => 'stylesheet', :type => 'text/css' } 
     %link{ :href => 'http://fonts.googleapis.com/css?family=Inconsolata', :rel => 'stylesheet', :type => 'text/css' }
 
+    %link{ :href => "#{asset_root}/images/ico-ruby.png", :rel => "shortcut icon", :type => "image/x-icon" }
+
     = stylesheet_link_tag "#{asset_root}/stylesheets/app.css", :media => "all"
   %body
     :javascript
@@ -19,7 +21,7 @@
       window.rubyEvalRoot = "#{ruby_eval_root}";
       window.challengeRoot = "#{challenge_root}";
       window.shareURL = "#{share_url}";
-    #page
+    #page      
       %section#instruction-pane
         %header      
           %img{ :src => "#{asset_root}/images/ico-ruby.png" }
@@ -32,6 +34,9 @@
             %span#js-challenge{ "data-path" => challenge_path, "data-answerable" => (!current_page.data["manual_continue"]).to_s, "data-capabilities" => current_page.data["capabilities"] }
           - else
             = yield
+
+          #instruction-loading-placebo
+            %img{ :src => "#{asset_root}/images/loading-placebo.gif" }
 
         %footer
 
@@ -54,8 +59,10 @@
               %h4.remove-bottom Masukan
               %small.remove-bottom Masukan potongan kode Ruby di sini dan tekan tombol jalankan untuk melihat hasilnya.
               %textarea
-            .btn-run-wrapper
+            .btn-run-wrapper              
               = link_to "Jalankan", 'javascript:;', class: "btn-run medium button right quarter-width"
+              #code-loading-placebo.right
+                %img{ :src => "#{asset_root}/images/loading-placebo.gif" }
           .code-tools.output            
             .code-output
               %h4 Keluaran

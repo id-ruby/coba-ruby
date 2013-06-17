@@ -71,11 +71,15 @@ ChallengeNavigateToURL = (challengeURL) ->
         history.pushState {}, $data.find('title').text(), challengeURL
 
       if $.support.transition
-        $question.transition opacity: 0, scale: 0.9, 350, 'out', ->
+        $("#instruction-loading-placebo").fadeIn("fast")
+        $question.transition opacity: 0, ->
           ChallengeContentUpdate()
-          $question.transition opacity: 1, scale: 1, 400, 'out'
+          $question.transition opacity: 1
+          $("#instruction-loading-placebo").fadeOut("fast")
       else
+        $("#instruction-loading-placebo").fadeIn("fast")
         ChallengeContentUpdate()
+        $("#instruction-loading-placebo").fadeOut("fast")
   else
     window.location.href = challengeURL
 
@@ -85,18 +89,20 @@ ChallengeNavigateToPath = (challengePath) ->
 
 
 # Snippet Editor
-# editor = null
-# editorInitialized = false
-# SnippetEditorSetValue = (snippet) ->
-#   if editorInitialized
-#     editor.getSession().setValue snippet
-#   else
-#     $("#snippet-runner-code-content").html "<pre>" + snippet + "</pre>"
-# SnippetEditorGetValue = ->
-#   if editorInitialized
-#     editor.getSession().getValue()
-#   else
-#     $("#snippet-runner-code-content").text()
+editor = null
+editorInitialized = false
+SnippetEditorSetValue = (snippet) ->
+  if editorInitialized
+    editor.getSession().setValue snippet
+  else
+    $("#action-pane .input textarea")[0].value = snippet
+SnippetEditorGetValue = ->
+  if editorInitialized
+    editor.getSession().getValue()
+  else
+    # $("#snippet-runner-code-content").text()
+    # console.log($("#action-pane .input textarea"))
+    $("#action-pane .input textarea")[0].value
 # SnippetEditorInitialize = ->
 #   if window.ace
 #     editor = ace.edit("code-editor")
@@ -108,7 +114,7 @@ ChallengeNavigateToPath = (challengePath) ->
 
 # Initialize Elements
 $body = $("body")
-$loadingIndicator = $ '#loading-indicator'
+$loadingIndicator = $("#code-loading-placebo")
 snippetRequestError = $("#snippet-request-error-template").text()
 $runner = $("#snippet-runner")
 $("#snippet-request-error-template").remove()
@@ -119,15 +125,17 @@ ChallengeInitialize()
 $(".btn-run").on 'click', ->
   $outputTarget = $("#run-output")
   snippet = SnippetEditorGetValue()
-  $loadingIndicator.text "Memproses..."
+  $loadingIndicator.fadeIn("fast")
 
   params = snippet: snippet, challenge_path: challengePath
+  console.log(params)
   params.capabilities = challengeCapabilities if challengeCapabilities? && challengeCapabilities.length > 0
   $.post(rubyEvalRoot + "/coba-ruby.json", params, (data, textStatus, xhr) ->
     if challengeAnswerable && data.is_correct
       ChallengeNavigateToPath data.next_challenge_path
 
-    $loadingIndicator.text ""
+    $loadingIndicator.fadeOut("fast")
+    # console.log(data.output)
     $outputTarget.text data.output
 
     if data.popups?
@@ -140,7 +148,7 @@ $(".btn-run").on 'click', ->
           $popup.append(popup.content)
 
   ).fail (response, status, message) ->
-    $loadingIndicator.text ''
+    $loadingIndicator.fadeOut("fast")
     errorMessage = response.responseText
     errorMessage = snippetRequestError if !errorMessage? || parseInt(response.status, 10) >= 500
     $outputTarget.text errorMessage
