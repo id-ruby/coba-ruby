@@ -127,15 +127,13 @@ $(".btn-run").on 'click', ->
   snippet = SnippetEditorGetValue()
   $loadingIndicator.fadeIn("fast")
 
-  params = snippet: snippet, challenge_path: challengePath
-  console.log(params)
+  params = snippet: snippet, challenge_path: challengePath  
   params.capabilities = challengeCapabilities if challengeCapabilities? && challengeCapabilities.length > 0
   $.post(rubyEvalRoot + "/coba-ruby.json", params, (data, textStatus, xhr) ->
     if challengeAnswerable && data.is_correct
       ChallengeNavigateToPath data.next_challenge_path
 
-    $loadingIndicator.fadeOut("fast")
-    # console.log(data.output)
+    $loadingIndicator.fadeOut("fast")    
     $outputTarget.text data.output
 
     if data.popups?
