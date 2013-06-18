@@ -180,3 +180,5 @@ $('.js-share-twitter').on 'click', ->
     tw_p: "tweetbutton",
     url: $t.data('url')
   window.open(sharer + $.param(params), 'sharer', 'width=626,height=436');
+
+$(".output .tabs").tabify()

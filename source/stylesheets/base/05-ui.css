@@ -107,3 +107,64 @@ button, a.button, input[type="submit"], input[type="reset"], input[type="button"
   box-shadow: 0 1px 2px #777;
 
 }
+
+
+/* 
+
+
+  |Tabs
+
+*/
+
+ul.tabs{
+  padding: 0.75em 0 0.55em;  
+  border-bottom: solid 0.075em #ccc;
+}
+
+ul.tabs li{
+  display: inline-block;
+}
+
+ul.tabs li a{
+  font-weight: bold;
+  padding: 0.7em 16px 0.7em;
+  margin: 0 8px;
+  color: #aaa;
+  background: #f2f2f2;
+  /*border-bottom: solid 0.1em #ccc;*/
+  border-top: solid 0.075em #ccc;
+  border-left: solid 1px #ccc;
+  border-right: solid 1px #ccc;
+  -moz-border-radius: 3px 3px 0 0;
+  -webkit-border-radius: 3px 3px 0 0;
+  border-radius: 3px 3px 0 0;
+}
+
+ul.tabs li a h4{
+  display: inline;
+  color: #555;
+}
+
+ul.tabs li:hover h4{
+  color: #993333;
+}
+
+ul.tabs li:hover{
+
+}
+
+ul.tabs li.active a{
+  background: #fff;
+  border-color: #ccc;
+  border-bottom: solid 0.05em #fff;
+  color: #666;
+  padding-bottom: 0.75em;
+}
+
+ul.tabs li.active h4{
+  color: #993333;
+}
+
+.tab-content{
+  
+}

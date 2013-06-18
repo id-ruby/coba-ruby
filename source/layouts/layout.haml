@@ -5,7 +5,7 @@
     %title
       - if title = current_page.data["title"]
         = title + " | "
-      CobaRuby
+      Coba Ruby
     - meta_description = current_page.data["meta_description"] || default_meta_description
     %meta{ name: "description", content: meta_description }
 
@@ -27,11 +27,11 @@
           %img{ :src => "#{asset_root}/images/ico-ruby.png" }
           %h1 Coba Ruby Yuk!
 
-        #js-question.pane.pane-left
+        #js-question
           - if (challenge_path = current_page.data["challenge_path"])
             = preserve do
               = yield
-            %span#js-challenge{ "data-path" => challenge_path, "data-answerable" => (!current_page.data["manual_continue"]).to_s, "data-capabilities" => current_page.data["capabilities"] }
+            #js-challenge{ "data-path" => challenge_path, "data-answerable" => (!current_page.data["manual_continue"]).to_s, "data-capabilities" => current_page.data["capabilities"] }
           - else
             = yield
 
@@ -54,29 +54,35 @@
       %section#action-pane        
         #tab-code-editor.tab-item.tab-item-selected
           .input
-            .code-editor-wrapper
-              / #code-editor
-              %h4.remove-bottom Masukan
-              %small.remove-bottom Masukan potongan kode Ruby di sini dan tekan tombol jalankan untuk melihat hasilnya.
-              %textarea
-            .btn-run-wrapper              
-              = link_to "Jalankan", 'javascript:;', class: "btn-run medium button right quarter-width"
-              #code-loading-placebo.right
-                %img{ :src => "#{asset_root}/images/loading-placebo.gif" }
-          .code-tools.output            
-            .code-output
-              %h4 Keluaran
-              %pre
-                %code#run-output
-        #tab-popup.tab-item
-          .popup-wrapper
-            %p
-              Ini Tempat Popup Keluar
-              = link_to "[Hapus Popup]", 'javascript:;', class: "js-clear-popup"
-            %hr
-            #popup
+            / #code-editor
+            %h4.remove-bottom Masukan
+            %small.remove-bottom Masukan potongan kode Ruby di sini dan tekan tombol jalankan untuk melihat hasilnya.
+            %textarea          
+            = link_to "Jalankan", 'javascript:;', class: "btn-run medium button right quarter-width"
+            #code-loading-placebo.right
+              %img{ :src => "#{asset_root}/images/loading-placebo.gif" }
+          .output.tab-root            
+            %ul.tabs
+              %li.active
+                %a{:href => "#code-output"}
+                  %h4 Keluaran
+              %li
+                %a{:href => "#popup-output"}
+                  %h4 Popup
+            .tab-contents
+              #code-output.tab-content            
+                %pre
+                  #run-output
+              #popup-output.tab-content
+                .popup-wrapper
+                  %p
+                    Ini Tempat Popup Keluar&emsp;
+                    = link_to "Hapus Popup", 'javascript:;', class: "js-clear-popup medium button"                  
+                  #popup
+          
     = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"
     = javascript_include_tag "http://nyan.catcyb.org/mengenal-ruby/js/vendor/editor/ace.js", charset: "utf-8"
+    = javascript_include_tag "#{asset_root}/javascripts/jquery.tabify.js"
     = javascript_include_tag "#{asset_root}/javascripts/all.js"
   / %body
   /   :javascript
