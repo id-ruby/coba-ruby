@@ -117,7 +117,7 @@ button, a.button, input[type="submit"], input[type="reset"], input[type="button"
 */
 
 ul.tabs{
-  padding: 0.75em 0 0.385em;  
+  padding: 0.45em 0 0.15em;  
   border-bottom: solid 0.075em #ccc;
 }
 
@@ -127,7 +127,7 @@ ul.tabs li{
 
 ul.tabs li a{
   font-weight: bold;
-  padding: 0.7em 16px 0.7em;
+  padding: 0.45em 16px;
   margin: 0 8px;
   color: #aaa;
   background: #f2f2f2;
@@ -156,9 +156,9 @@ ul.tabs li:hover{
 ul.tabs li.active a{
   background: #fff;
   border-color: #ccc;
-  border-bottom: solid 0.05em #fff;
+  border-bottom: solid 0.075em #fff;
   color: #666;
-  padding-bottom: 0.75em;
+  padding-bottom: 0.45em;
 }
 
 ul.tabs li.active h4{
