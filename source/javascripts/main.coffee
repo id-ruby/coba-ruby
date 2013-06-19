@@ -130,11 +130,16 @@ $(".btn-run").on 'click', ->
   params = snippet: snippet, challenge_path: challengePath  
   params.capabilities = challengeCapabilities if challengeCapabilities? && challengeCapabilities.length > 0
   $.post(rubyEvalRoot + "/coba-ruby.json", params, (data, textStatus, xhr) ->
+
+    data = $.parseJSON(data)
+
     if challengeAnswerable && data.is_correct
       ChallengeNavigateToPath data.next_challenge_path
 
-    $loadingIndicator.fadeOut("fast")    
+    $loadingIndicator.fadeOut("fast")
+
     $outputTarget.text data.output
+
 
     if data.popups?
       $popup = $("#popup")
