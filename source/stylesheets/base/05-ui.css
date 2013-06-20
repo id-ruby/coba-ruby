@@ -119,6 +119,7 @@ button, a.button, input[type="submit"], input[type="reset"], input[type="button"
 ul.tabs{
   padding: 0.45em 0 0.15em;  
   border-bottom: solid 0.075em #ccc;
+  margin-bottom: 0.9em;
 }
 
 ul.tabs li{

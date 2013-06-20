@@ -69,7 +69,7 @@
 
 	b, dt, legend { font-weight: bold; }
 	cite, dfn, i { font-style: italic; }
-	code, kbd, samp, pre, tt, var { font-family: 'Inconsolata', monospace; color: #111; }
+	code, kbd, samp, pre, tt, var { font-family: 'Droid Sans Mono', monospace; color: #111; }
   pre{
     background-color: #EEE;
     border: 0.05em solid #DDD;

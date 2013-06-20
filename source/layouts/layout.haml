@@ -51,32 +51,31 @@
           /   %img{ :src => "images/socialmediaicons/facebook-48x48.png" }
           / %a{ :onclick => "return Share.me(this)" :target => "_blank" :href => "https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Fid-ruby.org/coba-ruby%2F_display%2F&amp;text=Coba Ruby Yuk!&amp;url=http://id-ruby.org/coba-ruby" }
           /   %img{ :src => "images/socialmediaicons/twitter-48x48.png" }
-      %section#action-pane        
-        #tab-code-editor.tab-item.tab-item-selected
-          .input
-            / #code-editor
-            %h4.remove-bottom Masukan
-            %small.remove-bottom Masukan potongan kode Ruby di sini dan tekan tombol jalankan untuk melihat hasilnya.
-            %textarea          
-            = link_to "Jalankan", 'javascript:;', class: "btn-run medium button right quarter-width"
-            #code-loading-placebo.right
-              %img{ :src => "#{asset_root}/images/loading-placebo.gif" }
-          .output.tab-root            
-            %ul.tabs
-              %li.active
-                %a{:href => "#code-output"}
-                  %h4 Keluaran
-              %li
-                %a{:href => "#popup-output"}
-                  %h4 Popup
-            .tab-contents
-              #code-output.tab-content            
-                %pre
-                  #run-output
-              #popup-output.tab-content
-                .popup-wrapper
-                  = link_to "Hapus Popup", 'javascript:;', class: "js-clear-popup button right quarter-width"
-                  #popup
+      %section#action-pane
+        .input
+          / #code-editor
+          %h4.remove-bottom Masukan
+          %small.remove-bottom Masukan potongan kode Ruby di sini dan tekan tombol jalankan untuk melihat hasilnya.
+          %textarea          
+          = link_to "Jalankan", 'javascript:;', class: "btn-run medium button right quarter-width"
+          #code-loading-placebo.right
+            %img{ :src => "#{asset_root}/images/loading-placebo.gif" }
+        .output.tab-root            
+          %ul.tabs
+            %li.active
+              %a{:href => "#code-output"}
+                %h4 Keluaran
+            %li
+              %a{:href => "#popup-output"}
+                %h4 Popup
+          .tab-contents
+            #code-output.tab-content            
+              %pre
+                #run-output
+            #popup-output.tab-content
+              .popup-wrapper
+                = link_to "Hapus Popup", 'javascript:;', class: "js-clear-popup button right quarter-width"
+                #popup
           
     = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"
     = javascript_include_tag "http://nyan.catcyb.org/mengenal-ruby/js/vendor/editor/ace.js", charset: "utf-8"

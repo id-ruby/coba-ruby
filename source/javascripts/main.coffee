@@ -70,16 +70,16 @@ ChallengeNavigateToURL = (challengeURL) ->
         ChallengeInitialize()
         history.pushState {}, $data.find('title').text(), challengeURL
 
-      if $.support.transition
-        $("#instruction-loading-placebo").fadeIn("fast")
+      $("#instruction-loading-placebo").fadeIn("fast")
+
+      if $.support.transition        
         $question.transition opacity: 0, ->
           ChallengeContentUpdate()
-          $question.transition opacity: 1
-          $("#instruction-loading-placebo").fadeOut("fast")
-      else
-        $("#instruction-loading-placebo").fadeIn("fast")
+          $question.transition opacity: 1          
+      else      
         ChallengeContentUpdate()
-        $("#instruction-loading-placebo").fadeOut("fast")
+        
+      $("#instruction-loading-placebo").fadeOut("fast")
   else
     window.location.href = challengeURL
 

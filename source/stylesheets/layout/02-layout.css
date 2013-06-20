@@ -80,7 +80,7 @@
   }
 
   #action-pane .input{
-    height: 40%;
+    height: 45%;
 
     clear: both;
   }
@@ -92,8 +92,6 @@
     display: block;
     float: left;
 
-    color: #777;
-
     font-family: 'Droid Sans Mono', monospace;    
 
     margin-top: 0;
@@ -102,6 +100,11 @@
 
   #action-pane .output{
     clear: both;
+  }
+
+  #popup iframe{
+    width: 100%;
+    margin-top: 0.9em;
   }
 
   footer{
