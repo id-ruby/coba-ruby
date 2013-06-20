@@ -80,9 +80,11 @@
   }
 
   #action-pane .input{
-    height: 45%;
+    height: 40%;
 
     clear: both;
+
+    margin-top: 1.8em;
   }
 
   #action-pane .input textarea, #action-pane .output textarea{
@@ -100,6 +102,13 @@
 
   #action-pane .output{
     clear: both;
+    margin-bottom: 1.8em;
+  }
+
+  #popup{
+    clear: both;
+    width: 100%;
+    margin-top: 0.9em;
   }
 
   #popup iframe{
@@ -116,11 +125,24 @@
     display: none;
   }
 
+  #shameless-plug{
+    display: block;
+    float:right;
+    margin-bottom: 2.7em;
+  }
+
   footer img{
     height: 1.8em;
     display: block;
     float: left;
-    margin-right: 27px;
+    margin-right: 24px;
+  }
+
+  #shameless-plug img{
+    display: right;
+    float: right;
+    margin-left: 24px;
+    height: 1.8em;
   }
 
 
@@ -148,13 +170,9 @@
     #action-pane{
       padding-top: 1.75em;
     }
+    
 
-
-    footer{
-      margin: 7em 0 1.75em;
-    }
-
-    footer img{
+    #shameless-plug img{
       height: 1.75em;
     }
 
@@ -200,7 +218,7 @@
       height: auto;
     }
 
-    footer{
+    #shameless-plug{
       display: none;
     }
 
@@ -208,7 +226,7 @@
       display: block;
       width: 100%;
       float: left;
-      padding: 0em 24px 1.75em;
+      padding: 0em 24px 0em;
     }
 
   }

@@ -25,7 +25,7 @@ unless window.console and console.log
 # History Support
 HistorySupportAvailable = -> !!(window.history && history.pushState)
 
-
+# $(".output .tabs").tabify()
 
 # Challenge
 challengePath = ''
@@ -55,6 +55,11 @@ popstateIsBoundToWindow = false
 ChallengeNavigateToURL = (challengeURL) ->
   $.cookie cookieKeyLastChallengePath, challengePath, expires: 7, path: '/'
 
+  # current_
+
+  # console.log(challengeURL)
+  # console.log(challengePath)
+
   if HistorySupportAvailable()
     unless popstateIsBoundToWindow
       popstateIsBoundToWindow = true
@@ -63,7 +68,8 @@ ChallengeNavigateToURL = (challengeURL) ->
 
     $.get challengeURL, {}, (data, textStatus, xhr) ->
       questionId = "#js-question"
-      $question = $(questionId)
+      $question = $(questionId)      
+
       ChallengeContentUpdate = ->
         $data = $(data)
         $question.html $data.find(questionId).html()
@@ -156,15 +162,35 @@ $(".btn-run").on 'click', ->
     errorMessage = snippetRequestError if !errorMessage? || parseInt(response.status, 10) >= 500
     $outputTarget.text errorMessage
 
-$('.tab-button').on 'click', ->
-  $t = $ this
-  selectedClass = 'tab-button-selected'
-  unless $t.hasClass(selectedClass)
-    $t.addClass(selectedClass)
-  $t.siblings().removeClass(selectedClass)
-  $tab = $t.parent().parent()
-  $tab.find('.tab-item').hide()
-  $tab.find($t.data('show-selector')).show()
+# $('.tab-button').on 'click', ->
+#   $t = $ this
+#   selectedClass = 'tab-button-selected'
+#   unless $t.hasClass(selectedClass)
+#     $t.addClass(selectedClass)
+#   $t.siblings().removeClass(selectedClass)
+#   $tab = $t.parent().parent()
+#   $tab.find('.tab-item').hide()
+#   $tab.find($t.data('show-selector')).show()
+
+
+$(".tab-content").hide()
+
+$active = $(".tabs").find("li.active")
+
+$($active.find("a").attr("tab-content")).show()
+
+$(".tabs>li>a").on 'click', ->
+  $this = $(this)
+  $parent = $this.parent()
+
+  $(".tab-content").hide()    
+
+  $(".tabs li").removeClass("active")
+
+  $parent.addClass("active")
+
+  $($this.attr("tab-content")).show()
+
 
 $('.js-clear-popup').on 'click', -> $('#popup').empty()
 
@@ -183,5 +209,3 @@ $('.js-share-twitter').on 'click', ->
     tw_p: "tweetbutton",
     url: $t.data('url')
   window.open(sharer + $.param(params), 'sharer', 'width=626,height=436');
-
-$(".output .tabs").tabify()
