@@ -1,6 +1,9 @@
 # Coba Ruby
 
-Situs ini menggunakan [Middleman](http://middlemanapp.com).
+Situs ini terinspirasi dari [tryruby.org](http://tryruby.org), di mana pengunjung dapat mencoba Ruby
+dan mengikuti kuis pendek dari browser modern.
+
+Situs ini dibuat menggunakan [Middleman](http://middlemanapp.com).
 Kode untuk mengevaluasi jawaban ada di [sini](https://github.com/catcyborg/mengenal-ruby-eval).
 
 ## Setup
@@ -18,6 +21,16 @@ Kode untuk mengevaluasi jawaban ada di [sini](https://github.com/catcyborg/menge
 ```
 ./deploy
 ```
+
+
+## Kontributor
+
+- [catcyborg](https://github.com/catcyborg): Terjemah tryruby.org dan implementasi awal
+- [widyatama](https://github.com/widyatama): Desain
+- [xinuc](https://github.com/xinuc): Berbagai bugfix dan ide
+- [gozali](https://github.com/gozali): Ide dan koordinator [id-ruby](https://github.com/id-ruby)
+- [qoyyim](https://github.com/qoyyim): Perbaikan terjemahan
+
 
 ## Mau Berkontribusi?
 
