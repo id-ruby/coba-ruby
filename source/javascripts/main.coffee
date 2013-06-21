@@ -156,8 +156,6 @@ $(".btn-run").on 'click', ->
   params.capabilities = challengeCapabilities if challengeCapabilities? && challengeCapabilities.length > 0
   $.post(rubyEvalRoot + "/coba-ruby.json", params, (data, textStatus, xhr) ->
 
-    data = $.parseJSON(data)
-
     if challengeAnswerable && data.is_correct
       ChallengeNavigateToPath data.next_challenge_path
 
