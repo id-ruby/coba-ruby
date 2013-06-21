@@ -5,57 +5,136 @@
     %title
       - if title = current_page.data["title"]
         = title + " | "
-      CobaRuby
+      Coba Ruby
     - meta_description = current_page.data["meta_description"] || default_meta_description
     %meta{ name: "description", content: meta_description }
-    = stylesheet_link_tag "#{asset_root}/stylesheets/style.css", :media => "all"
+
+    %link{ :href => 'http://fonts.googleapis.com/css?family=Open+Sans:400,700,600', :rel => 'stylesheet', :type => 'text/css' } 
+    %link{ :href => 'http://fonts.googleapis.com/css?family=Inconsolata', :rel => 'stylesheet', :type => 'text/css' }
+
+    %link{ :href => "#{asset_root}/images/ico-ruby.png", :rel => "shortcut icon", :type => "image/x-icon" }
+
+    = stylesheet_link_tag "#{asset_root}/stylesheets/app.css", :media => "all"
+
   %body
     :javascript
       window.cookiePrefix = "#{cookie_prefix}";
       window.rubyEvalRoot = "#{ruby_eval_root}";
       window.challengeRoot = "#{challenge_root}";
       window.shareURL = "#{share_url}";
-    .header
-      %h1 Coba Ruby, Yuk!
-      %span.links-referring
-        Atau ke
-        = link_to "Ruby Indonesia", 'http://id-ruby.org/', target: "_blank"
-        \/
-        = link_to "Mengenal Ruby", 'http://nyan.catcyb.org/mengenal-ruby/', target: "_blank"
-        \/ Share di
-      = link_to "Facebook", 'javascript:;', class: "js-share-facebook share share-facebook", "data-url" => share_url
-      = link_to "Twitter", 'javascript:;', class: "js-share-twitter share share-twitter", "data-url" => share_url, "data-lang" => "id", "data-count" => "none", "data-hashtags" => "CobaRuby"
-    .panes.clearfix
-      #js-question.pane.pane-left
-        - if (challenge_path = current_page.data["challenge_path"])
-          = preserve do
+    #page      
+      %section#instruction-pane
+        %header      
+          %img{ :src => "#{asset_root}/images/ico-ruby.png" }
+          %h1 Coba Ruby Yuk!
+
+        #js-question
+          - if (challenge_path = current_page.data["challenge_path"])
+            = preserve do
+              = yield
+            #js-challenge{ "data-path" => challenge_path, "data-answerable" => (!current_page.data["manual_continue"]).to_s, "data-capabilities" => current_page.data["capabilities"] }
+          - else
             = yield
-          %span#js-challenge{ "data-path" => challenge_path, "data-answerable" => (!current_page.data["manual_continue"]).to_s, "data-capabilities" => current_page.data["capabilities"] }
-        - else
-          = yield
-      .pane.pane-right
-        .tab
-          .tab-buttons
-            = link_to "{}", "javascript:;", class: "tab-button tab-button-code tab-button-selected", "data-show-selector" => "#tab-code-editor"
-            = link_to "Popup", "javascript:;", class: "tab-button tab-button-popup", "data-show-selector" => "#tab-popup"
-          #tab-code-editor.tab-item.tab-item-selected
-            .code-editor-wrapper
-              #code-editor
-            .code-tools
-              .btn-run-wrapper
-                = link_to "Jalankan", 'javascript:;', class: "btn-run"
-              .code-output
-                %h4 Output
-                %pre
-                  %code#run-output
-          #tab-popup.tab-item
-            .popup-wrapper
-              %p
-                Ini Tempat Popup Keluar
-                = link_to "[Hapus Popup]", 'javascript:;', class: "js-clear-popup"
-              %hr
-              #popup
-    %script(type="text/plain" id="snippet-request-error-template") Ups! Maaf, lagi error... Coba lagi nanti, atau kontak thecatcyborg+jpruby@gmail.com melalui email. Terima kasih!
+
+          #instruction-loading-placebo
+            %img{ :src => "#{asset_root}/images/loading-placebo.gif" }
+        
+      %section#action-pane
+        #shameless-plug
+
+          %a{:href => 'javascript:;', class: "js-share-facebook share share-facebook", "data-url" => share_url}
+            %img{ :src => "#{asset_root}/images/socialmediaicons/facebook-48x48.png" }
+          %a{:href => 'javascript:;', class: "js-share-twitter share share-twitter", "data-url" => share_url, "data-lang" => "id", "data-count" => "none", "data-hashtags" => "CobaRuby"}
+            %img{ :src => "#{asset_root}/images/socialmediaicons/twitter-48x48.png" }
+          %a{ :href => "http://id-ruby.org" }
+            %img{ :src => "#{asset_root}/images/logo-id-ruby.png", :alt => "ID Ruby", :title => "Ruby Indonesia" }
+        .input
+          / #code-editor
+          %h4.remove-bottom Masukan
+          %small.remove-bottom Masukan potongan kode Ruby di sini dan tekan tombol jalankan untuk melihat hasilnya.
+          %textarea#code-editor
+          / #code-editor
+          = link_to "Jalankan", 'javascript:;', class: "btn-run medium button right quarter-width"
+          #code-loading-placebo.right
+            %img{ :src => "#{asset_root}/images/loading-placebo.gif" }
+        .output
+          %ul.tabs
+            %li.active
+              %a{"tab-content" => "#code-output"}
+                %h4 Keluaran
+            %li
+              %a{"tab-content" => "#popup-output"}
+                %h4 Popup
+          .tab-contents
+            #code-output.tab-content            
+              %pre
+                #run-output
+            #popup-output.tab-content
+              .popup-wrapper
+                = link_to "Hapus Popup", 'javascript:;', class: "js-clear-popup button right quarter-width"
+                #popup
+
+      %footer.compact
+        %a{ :href => "http://id-ruby.org" }
+          %img{ :src => "#{asset_root}/images/logo-id-ruby.png", :alt => "ID Ruby", :title => "Ruby Indonesia" }
+        %a{:href => 'javascript:;', class: "js-share-facebook share share-facebook", "data-url" => share_url}
+          %img{ :src => "#{asset_root}/images/socialmediaicons/facebook-48x48.png" }
+        %a{:href => 'javascript:;', class: "js-share-twitter share share-twitter", "data-url" => share_url, "data-lang" => "id", "data-count" => "none", "data-hashtags" => "CobaRuby"}
+          %img{ :src => "#{asset_root}/images/socialmediaicons/twitter-48x48.png" }
+
+          
     = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"
-    = javascript_include_tag "http://nyan.catcyb.org/mengenal-ruby/js/vendor/editor/ace.js", charset: "utf-8"
+    / = javascript_include_tag "http://nyan.catcyb.org/mengenal-ruby/js/vendor/editor/ace.js", charset: "utf-8"
+    / = javascript_include_tag "#{asset_root}/javascripts/codemirror.js"
+    / = javascript_include_tag "#{asset_root}/javascripts/ruby/ruby.js"
     = javascript_include_tag "#{asset_root}/javascripts/all.js"
+  / %body
+  /   :javascript
+  /     window.cookiePrefix = "#{cookie_prefix}";
+  /     window.rubyEvalRoot = "#{ruby_eval_root}";
+  /     window.challengeRoot = "#{challenge_root}";
+  /     window.shareURL = "#{share_url}";
+  /   .header
+  /     %h1 Coba Ruby Yuk!
+  /     %span.links-referring
+  /       Atau ke
+  /       = link_to "Ruby Indonesia", 'http://id-ruby.org/', target: "_blank"
+  /       \/
+  /       = link_to "Mengenal Ruby", 'http://nyan.catcyb.org/mengenal-ruby/', target: "_blank"
+  /       \/ Share di
+  /     = link_to "Facebook", 'javascript:;', class: "js-share-facebook share share-facebook", "data-url" => share_url
+  /     = link_to "Twitter", 'javascript:;', class: "js-share-twitter share share-twitter", "data-url" => share_url, "data-lang" => "id", "data-count" => "none", "data-hashtags" => "CobaRuby"
+  /   .panes.clearfix
+  /     #js-question.pane.pane-left
+  /       - if (challenge_path = current_page.data["challenge_path"])
+  /         = preserve do
+  /           = yield
+  /         %span#js-challenge{ "data-path" => challenge_path, "data-answerable" => (!current_page.data["manual_continue"]).to_s, "data-capabilities" => current_page.data["capabilities"] }
+  /       - else
+  /         = yield
+  /     .pane.pane-right
+  /       .tab
+  /         .tab-buttons
+  /           = link_to "{}", "javascript:;", class: "tab-button tab-button-code tab-button-selected", "data-show-selector" => "#tab-code-editor"
+  /           = link_to "Popup", "javascript:;", class: "tab-button tab-button-popup", "data-show-selector" => "#tab-popup"
+  /         #tab-code-editor.tab-item.tab-item-selected
+  /           .code-editor-wrapper
+  /             #code-editor
+  /           .code-tools
+  /             .btn-run-wrapper
+  /               = link_to "Jalankan", 'javascript:;', class: "btn-run"
+  /             .code-output
+  /               %h4 Output
+  /               %pre
+  /                 %code#run-output
+  /         #tab-popup.tab-item
+  /           .popup-wrapper
+  /             %p
+  /               Ini Tempat Popup Keluar
+  /               = link_to "[Hapus Popup]", 'javascript:;', class: "js-clear-popup"
+  /             %hr
+  /             #popup
+  /   %script(type="text/plain" id="snippet-request-error-template") Ups! Maaf, lagi error... Coba lagi nanti, atau kontak thecatcyborg+jpruby@gmail.com melalui email. Terima kasih!
+  /   = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"
+  /   = javascript_include_tag "http://nyan.catcyb.org/mengenal-ruby/js/vendor/editor/ace.js", charset: "utf-8"
+  /   = javascript_include_tag "#{asset_root}/javascripts/all.js"
