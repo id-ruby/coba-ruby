@@ -25,7 +25,7 @@ unless window.console and console.log
 # History Support
 HistorySupportAvailable = -> !!(window.history && history.pushState)
 
-
+# $(".output .tabs").tabify()
 
 # Challenge
 challengePath = ''
@@ -42,6 +42,16 @@ ChallengeInitialize = ->
     $b = $('body')
     $b.removeClass()
     $b.addClass challengeCapabilities.join('   ') if challengeCapabilities?
+
+  # instructionCode = CodeMirror($("#js-question pre")[0], 
+  #   lineNumbers: true
+  #   tabIndex: 1
+  #   tabSize: 2
+  #   fixedGutter: false
+  #   mode: "text/x-ruby"    
+  #   readOnly: true
+  # )
+
   $challengeCodePrefill = $ '#code-prefill'
   if $challengeCodePrefill? && $challengeCodePrefill.length > 0
     SnippetEditorSetValue $challengeCodePrefill.text().trim() + "\n# Ketik jawaban di bawah ini\n"
@@ -55,6 +65,11 @@ popstateIsBoundToWindow = false
 ChallengeNavigateToURL = (challengeURL) ->
   $.cookie cookieKeyLastChallengePath, challengePath, expires: 7, path: '/'
 
+  # current_
+
+  # console.log(challengeURL)
+  # console.log(challengePath)
+
   if HistorySupportAvailable()
     unless popstateIsBoundToWindow
       popstateIsBoundToWindow = true
@@ -63,19 +78,24 @@ ChallengeNavigateToURL = (challengeURL) ->
 
     $.get challengeURL, {}, (data, textStatus, xhr) ->
       questionId = "#js-question"
-      $question = $(questionId)
+      $question = $(questionId)      
+
       ChallengeContentUpdate = ->
         $data = $(data)
         $question.html $data.find(questionId).html()
         ChallengeInitialize()
         history.pushState {}, $data.find('title').text(), challengeURL
 
-      if $.support.transition
-        $question.transition opacity: 0, scale: 0.9, 350, 'out', ->
+      $("#instruction-loading-placebo").fadeIn("fast")
+
+      if $.support.transition        
+        $question.transition opacity: 0, ->
           ChallengeContentUpdate()
-          $question.transition opacity: 1, scale: 1, 400, 'out'
-      else
+          $question.transition opacity: 1          
+      else      
         ChallengeContentUpdate()
+        
+      $("#instruction-loading-placebo").fadeOut("fast")
   else
     window.location.href = challengeURL
 
@@ -85,30 +105,41 @@ ChallengeNavigateToPath = (challengePath) ->
 
 
 # Snippet Editor
-editor = null
+codeEditor = null
 editorInitialized = false
 SnippetEditorSetValue = (snippet) ->
   if editorInitialized
-    editor.getSession().setValue snippet
+    codeEditor.setValue snippet
   else
-    $("#snippet-runner-code-content").html "<pre>" + snippet + "</pre>"
+    $("#action-pane .input textarea")[0].value = snippet
 SnippetEditorGetValue = ->
   if editorInitialized
-    editor.getSession().getValue()
+    codeEditor.getValue()
   else
-    $("#snippet-runner-code-content").text()
+    # $("#snippet-runner-code-content").text()
+    # console.log($("#action-pane .input textarea"))
+    $("#action-pane .input textarea")[0].value
 SnippetEditorInitialize = ->
-  if window.ace
-    editor = ace.edit("code-editor")
-    editor.setTheme "ace/theme/solarized_light"
-    editor.getSession().setMode "ace/mode/ruby"
-    editorInitialized = true
+  codeEditor = CodeMirror.fromTextArea($("#code-editor")[0],
+    lineNumbers: true
+    tabIndex: 1
+    tabSize: 2
+    fixedGutter: false
+    mode: "ruby"
+  )
+  editorInitialized = true  
+
+#   if window.ace
+#     editor = ace.edit("code-editor")
+#     # editor.setTheme "ace/theme/solarized_light"
+#     editor.getSession().setMode "ace/mode/ruby"
+#     editorInitialized = true
 
 
 
 # Initialize Elements
 $body = $("body")
-$loadingIndicator = $ '#loading-indicator'
+$loadingIndicator = $("#code-loading-placebo")
 snippetRequestError = $("#snippet-request-error-template").text()
 $runner = $("#snippet-runner")
 $("#snippet-request-error-template").remove()
@@ -119,16 +150,21 @@ ChallengeInitialize()
 $(".btn-run").on 'click', ->
   $outputTarget = $("#run-output")
   snippet = SnippetEditorGetValue()
-  $loadingIndicator.text "Memproses..."
+  $loadingIndicator.fadeIn("fast")
 
-  params = snippet: snippet, challenge_path: challengePath
+  params = snippet: snippet, challenge_path: challengePath  
   params.capabilities = challengeCapabilities if challengeCapabilities? && challengeCapabilities.length > 0
   $.post(rubyEvalRoot + "/coba-ruby.json", params, (data, textStatus, xhr) ->
+
+    data = $.parseJSON(data)
+
     if challengeAnswerable && data.is_correct
       ChallengeNavigateToPath data.next_challenge_path
 
-    $loadingIndicator.text ""
+    $loadingIndicator.fadeOut("fast")
+
     $outputTarget.text data.output
+
 
     if data.popups?
       $popup = $("#popup")
@@ -140,24 +176,45 @@ $(".btn-run").on 'click', ->
           $popup.append(popup.content)
 
   ).fail (response, status, message) ->
-    $loadingIndicator.text ''
+    $loadingIndicator.fadeOut("fast")
     errorMessage = response.responseText
     errorMessage = snippetRequestError if !errorMessage? || parseInt(response.status, 10) >= 500
     $outputTarget.text errorMessage
 
-$('.tab-button').on 'click', ->
-  $t = $ this
-  selectedClass = 'tab-button-selected'
-  unless $t.hasClass(selectedClass)
-    $t.addClass(selectedClass)
-  $t.siblings().removeClass(selectedClass)
-  $tab = $t.parent().parent()
-  $tab.find('.tab-item').hide()
-  $tab.find($t.data('show-selector')).show()
+# $('.tab-button').on 'click', ->
+#   $t = $ this
+#   selectedClass = 'tab-button-selected'
+#   unless $t.hasClass(selectedClass)
+#     $t.addClass(selectedClass)
+#   $t.siblings().removeClass(selectedClass)
+#   $tab = $t.parent().parent()
+#   $tab.find('.tab-item').hide()
+#   $tab.find($t.data('show-selector')).show()
+
+
+$(".tab-content").hide()
+
+$active = $(".tabs").find("li.active")
+
+$($active.find("a").attr("tab-content")).show()
+
+$(".tabs>li>a").on 'click', ->
+  $this = $(this)
+  $parent = $this.parent()
+
+  $(".tab-content").hide()    
+
+  $(".tabs li").removeClass("active")
+
+  $parent.addClass("active")
+
+  $($this.attr("tab-content")).show()
+
 
 $('.js-clear-popup').on 'click', -> $('#popup').empty()
 
 $('.js-share-facebook').on 'click', ->
+  console.log("hoho")
   sharer = "https://www.facebook.com/sharer/sharer.php?u=";
   window.open(sharer + $(this).data('url'), 'sharer', 'width=626,height=436');
 

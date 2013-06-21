@@ -1,1 +1,5 @@
-//= require_tree .
+//= require 'jquery.cookie'
+//= require 'jquery.transit.min'
+//= require 'codemirror'
+//= require 'ruby/ruby'
+//= require 'main'
