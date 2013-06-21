@@ -42,6 +42,16 @@ ChallengeInitialize = ->
     $b = $('body')
     $b.removeClass()
     $b.addClass challengeCapabilities.join('   ') if challengeCapabilities?
+
+  # instructionCode = CodeMirror($("#js-question pre")[0], 
+  #   lineNumbers: true
+  #   tabIndex: 1
+  #   tabSize: 2
+  #   fixedGutter: false
+  #   mode: "text/x-ruby"    
+  #   readOnly: true
+  # )
+
   $challengeCodePrefill = $ '#code-prefill'
   if $challengeCodePrefill? && $challengeCodePrefill.length > 0
     SnippetEditorSetValue $challengeCodePrefill.text().trim() + "\n# Ketik jawaban di bawah ini\n"
@@ -110,13 +120,14 @@ SnippetEditorGetValue = ->
     # console.log($("#action-pane .input textarea"))
     $("#action-pane .input textarea")[0].value
 SnippetEditorInitialize = ->
-  codeEditor = CodeMirror.fromTextArea($(".input textarea")[0], 
+  codeEditor = CodeMirror.fromTextArea($("#code-editor")[0],
     lineNumbers: true
     tabIndex: 1
     tabSize: 2
     fixedGutter: false
+    mode: "ruby"
   )
-  editorInitialized = true
+  editorInitialized = true  
 
 #   if window.ace
 #     editor = ace.edit("code-editor")
