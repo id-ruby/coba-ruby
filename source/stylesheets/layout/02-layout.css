@@ -99,6 +99,12 @@
     margin-top: 0;
   }
 
+  #action-pane .input #code-editor{
+    width: 100%;
+    height: 50%;
+
+  }
+
 
   #action-pane .output{
     clear: both;

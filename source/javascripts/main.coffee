@@ -95,24 +95,32 @@ ChallengeNavigateToPath = (challengePath) ->
 
 
 # Snippet Editor
-editor = null
+codeEditor = null
 editorInitialized = false
 SnippetEditorSetValue = (snippet) ->
   if editorInitialized
-    editor.getSession().setValue snippet
+    codeEditor.setValue snippet
   else
     $("#action-pane .input textarea")[0].value = snippet
 SnippetEditorGetValue = ->
   if editorInitialized
-    editor.getSession().getValue()
+    codeEditor.getValue()
   else
     # $("#snippet-runner-code-content").text()
     # console.log($("#action-pane .input textarea"))
     $("#action-pane .input textarea")[0].value
-# SnippetEditorInitialize = ->
+SnippetEditorInitialize = ->
+  codeEditor = CodeMirror.fromTextArea($(".input textarea")[0], 
+    lineNumbers: true
+    tabIndex: 1
+    tabSize: 2
+    fixedGutter: false
+  )
+  editorInitialized = true
+
 #   if window.ace
 #     editor = ace.edit("code-editor")
-#     editor.setTheme "ace/theme/solarized_light"
+#     # editor.setTheme "ace/theme/solarized_light"
 #     editor.getSession().setMode "ace/mode/ruby"
 #     editorInitialized = true
 
@@ -125,7 +133,7 @@ snippetRequestError = $("#snippet-request-error-template").text()
 $runner = $("#snippet-runner")
 $("#snippet-request-error-template").remove()
 
-# SnippetEditorInitialize()
+SnippetEditorInitialize()
 ChallengeInitialize()
 
 $(".btn-run").on 'click', ->
