@@ -64,50 +64,6 @@
 /* 
 
 
-  |Tables
-
-*/  
-
-  table{
-    margin-bottom: 1.5em;
-  }
-  table caption{
-    font-size: 0.75em;
-    line-height: 2;
-  }
-  thead{
-    font-size: 1.25em;
-    /*line-height: 2.425;*/
-    line-height: 2.4;
-    background-color: #eee;
-    font-weight: bold;
-    color: #777;    
-    border: solid 0.05em #ddd;
-  }
-  tbody td{
-    vertical-align: top;
-    border: solid 0.1em #ddd;
-    padding: 0.65em 12px;
-  }
-
-  tr.highlight, tr.highlight td, td.highlight { background: #AD2072; color:#fff !important; border-color: #AD2072; }
-
-  tfoot{
-    font-size: 0.75em;
-    line-height: 2; 
-  }
-  .numeric{
-    text-align: right;
-  }
-
-  .v-mid{
-    vertical-align: middle;
-  }
-
-
-/* 
-
-
 	|Miscs
 
 */

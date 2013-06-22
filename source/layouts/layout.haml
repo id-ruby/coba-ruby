@@ -51,11 +51,9 @@
           %a{ :href => "http://id-ruby.org" }
             %img{ :src => "#{asset_root}/images/logo-id-ruby.png", :alt => "ID Ruby", :title => "Ruby Indonesia" }
         .input
-          / #code-editor
           %h4.remove-bottom Masukan
           %small.remove-bottom Masukan potongan kode Ruby di sini dan tekan tombol jalankan untuk melihat hasilnya.
           %textarea#code-editor
-          / #code-editor
           = link_to "Jalankan", 'javascript:;', class: "btn-run medium button right quarter-width"
           #code-loading-placebo.right
             %img{ :src => "#{asset_root}/images/loading-placebo.gif" }
@@ -87,8 +85,6 @@
           
     = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"
     / = javascript_include_tag "http://nyan.catcyb.org/mengenal-ruby/js/vendor/editor/ace.js", charset: "utf-8"
-    / = javascript_include_tag "#{asset_root}/javascripts/codemirror.js"
-    / = javascript_include_tag "#{asset_root}/javascripts/ruby/ruby.js"
     = javascript_include_tag "#{asset_root}/javascripts/all.js"
     = javascript_include_tag "#{asset_root}/javascripts/ga.js"    
   / %body
