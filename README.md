@@ -26,7 +26,7 @@ Kode untuk mengevaluasi jawaban ada di [sini](https://github.com/catcyborg/menge
 ## Kontributor
 
 - [catcyborg](https://github.com/catcyborg): Terjemah tryruby.org dan implementasi awal
-- [widyatama](https://github.com/widyatama): Desain
+- [widatama](https://github.com/widatama): Desain
 - [xinuc](https://github.com/xinuc): Berbagai bugfix dan ide
 - [gozali](https://github.com/gozali): Ide dan koordinator [id-ruby](https://github.com/id-ruby)
 - [qoyyim](https://github.com/qoyyim): Perbaikan terjemahan
