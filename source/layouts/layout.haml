@@ -9,6 +9,8 @@
     - meta_description = current_page.data["meta_description"] || default_meta_description
     %meta{ name: "description", content: meta_description }
 
+    %meta{ name: "viewport", content: "width=device-width" }
+
     %link{ :href => 'http://fonts.googleapis.com/css?family=Open+Sans:400,700,600', :rel => 'stylesheet', :type => 'text/css' } 
     %link{ :href => 'http://fonts.googleapis.com/css?family=Inconsolata', :rel => 'stylesheet', :type => 'text/css' }
 
