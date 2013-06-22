@@ -220,8 +220,8 @@
       overflow: none; 
     }
 
-    #action-pane .input textarea, #action-pane .output textarea{
-      height: auto;
+    #action-pane .input textarea, #action-pane .input .CodeMirror{
+      height: 14em;
     }
 
     #shameless-plug{
