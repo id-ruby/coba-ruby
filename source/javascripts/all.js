@@ -1,5 +1,5 @@
 //= require 'jquery.cookie'
-//= require 'jquery.transit.min'
+//= require 'jquery.transit'
 //= require 'codemirror'
 //= require 'ruby/ruby'
 //= require 'main'
