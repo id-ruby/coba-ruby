@@ -55,7 +55,6 @@ ChallengeInitialize = ->
   $challengeCodePrefill = $ '#code-prefill'
   if $challengeCodePrefill? && $challengeCodePrefill.length > 0
     text = $challengeCodePrefill.text().trim()
-    console.log text.length
     text += "\n# Ketik jawaban di bawah ini\n" if text.length > 0
     SnippetEditorSetValue text
   if HistorySupportAvailable()
@@ -67,11 +66,6 @@ ChallengeInitialize = ->
 popstateIsBoundToWindow = false
 ChallengeNavigateToURL = (challengeURL) ->
   $.cookie cookieKeyLastChallengePath, challengePath, expires: 7, path: '/'
-
-  # current_
-
-  # console.log(challengeURL)
-  # console.log(challengePath)
 
   if HistorySupportAvailable()
     unless popstateIsBoundToWindow
@@ -215,7 +209,6 @@ $(".tabs>li>a").on 'click', ->
 $('.js-clear-popup').on 'click', -> $('#popup').empty()
 
 $('.js-share-facebook').on 'click', ->
-  console.log("hoho")
   sharer = "https://www.facebook.com/sharer/sharer.php?u=";
   window.open(sharer + $(this).data('url'), 'sharer', 'width=626,height=436');
 
