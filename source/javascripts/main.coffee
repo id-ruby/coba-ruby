@@ -54,7 +54,10 @@ ChallengeInitialize = ->
 
   $challengeCodePrefill = $ '#code-prefill'
   if $challengeCodePrefill? && $challengeCodePrefill.length > 0
-    SnippetEditorSetValue $challengeCodePrefill.text().trim() + "\n# Ketik jawaban di bawah ini\n"
+    text = $challengeCodePrefill.text().trim()
+    console.log text.length
+    text += "\n# Ketik jawaban di bawah ini\n" if text.length > 0
+    SnippetEditorSetValue text
   if HistorySupportAvailable()
     $(".js-challenge-link").on 'click', ->
       ChallengeNavigateToURL $(this).attr('href')
