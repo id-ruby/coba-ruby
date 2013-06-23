@@ -1,16 +1,6 @@
-
 /*
-
-
-  |One file to load them all
-
-*/
-
-@import url('base/01-reset.css');
-@import url('base/02-base.css');
-@import url('base/03-typography.css');
-@import url('base/04-form.css');
-@import url('base/05-ui.css');
-@import url('layout/01-grid.css');
-@import url('layout/02-layout.css');
-@import url('plugins/codemirror.css');
+ * |One file to load them all
+ *= require_tree ./base/
+ *= require_tree ./layout/
+ *= require_tree ./plugins/
+ */
