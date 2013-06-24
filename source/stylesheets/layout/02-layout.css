@@ -123,7 +123,7 @@
   }
 
   footer{
-    margin: 6.3em 0 1.8em;
+    margin: 3.6em 0 1.8em;
     padding-bottom: 1.8em;
   }
 
@@ -183,6 +183,11 @@
     }
 
 
+    #code-loading-placebo{
+      width: 45px;
+    }
+
+
   }
 
   @media only screen and (max-width: 1200px) and (min-width: 900px){
@@ -222,6 +227,10 @@
 
     #action-pane .input textarea, #action-pane .input .CodeMirror{
       height: 14em;
+    }
+
+    #code-loading-placebo{
+      width: 45px;
     }
 
     #shameless-plug{
