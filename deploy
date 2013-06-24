@@ -1,3 +1,3 @@
 #!/bin/bash
 export DEPLOY=1
-bundle exec rake generate_challenge_paths && middleman build && middleman deploy
+bundle exec rake generate_challenge_paths && middleman build -c && middleman deploy
