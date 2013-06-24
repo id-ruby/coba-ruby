@@ -101,6 +101,8 @@ configure :build do
   # set :http_path, "/Content/images/"
 end
 
+page "/sitemap.xml", :layout => false
+
 activate :syntax
 set :markdown, :tables => true, :autolink => true, :gh_blockcode => true, :fenced_code_blocks => true
 set :markdown_engine, :redcarpet
