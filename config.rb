@@ -95,11 +95,7 @@ configure :build do
 
   # Use relative URLs
   # activate :relative_assets
-
-  # Compress PNGs after build
-  # First: gem install middleman-smusher
-  require "middleman-smusher"
-  activate :smusher
+  activate :image_optim
 
   # Or use a different image path
   # set :http_path, "/Content/images/"

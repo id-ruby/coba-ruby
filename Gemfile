@@ -1,10 +1,11 @@
 source 'http://rubygems.org'
 
+gem "rake"
 gem "colorize"
 gem "faraday"
 gem "redcarpet"
 gem "middleman", "~> 3.0.13"
 gem "middleman-deploy", "~> 0.0.12"
-gem "middleman-smusher"
+gem "middleman-imageoptim", "~> 0.0.4"
 gem "middleman-syntax"
 gem "middleman-minify-html"

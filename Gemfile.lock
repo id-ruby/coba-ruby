@@ -22,6 +22,7 @@ GEM
       multi_json (~> 1.0)
     faraday (0.8.7)
       multipart-post (~> 1.1)
+    fspath (2.0.4)
     fssm (0.2.10)
     haml (4.0.2)
       tilt
@@ -31,9 +32,14 @@ GEM
     http_router (0.10.2)
       rack (>= 1.0.0)
       url_mount (~> 0.2.1)
-    httpclient (2.3.3)
     i18n (0.6.1)
-    json (1.7.7)
+    image_optim (0.8.1)
+      fspath (~> 2.0.3)
+      image_size (~> 1.1.2)
+      in_threads (~> 1.1.1)
+      progress (~> 2.4.0)
+    image_size (1.1.2)
+    in_threads (1.1.1)
     listen (0.7.3)
     maruku (0.6.1)
       syntax (>= 1.0.0)
@@ -53,6 +59,9 @@ GEM
     middleman-deploy (0.0.12)
       middleman-core (>= 3.0.0)
       ptools
+    middleman-imageoptim (0.0.4)
+      image_optim (~> 0.8.0)
+      middleman-core (>= 3.0)
     middleman-minify-html (3.0.0)
       htmlcompressor
       middleman-core (~> 3.0.0)
@@ -68,9 +77,6 @@ GEM
       padrino-helpers (= 0.10.7)
       sass (>= 3.1.20)
       uglifier (~> 1.2.6)
-    middleman-smusher (3.0.0)
-      middleman (>= 3.0.0)
-      smusher (~> 0.4.9)
     middleman-sprockets (3.0.11)
       middleman-more (>= 3.0.11)
       sprockets (~> 2.1)
@@ -91,6 +97,7 @@ GEM
       i18n (~> 0.6)
       padrino-core (= 0.10.7)
     posix-spawn (0.3.6)
+    progress (2.4.0)
     ptools (1.2.2)
     pygments.rb (0.5.0)
       posix-spawn (~> 0.3.6)
@@ -108,10 +115,6 @@ GEM
       rack (~> 1.4)
       rack-protection (~> 1.3)
       tilt (~> 1.3, >= 1.3.3)
-    smusher (0.4.9)
-      httpclient (>= 2.2)
-      json
-      rake
     sprockets (2.9.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -140,7 +143,8 @@ DEPENDENCIES
   faraday
   middleman (~> 3.0.13)
   middleman-deploy (~> 0.0.12)
+  middleman-imageoptim (~> 0.0.4)
   middleman-minify-html
-  middleman-smusher
   middleman-syntax
+  rake
   redcarpet
