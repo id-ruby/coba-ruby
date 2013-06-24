@@ -107,6 +107,7 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    rake (10.0.4)
     rb-fsevent (0.9.3)
     redcarpet (2.2.2)
     sass (3.2.8)
@@ -145,4 +146,5 @@ DEPENDENCIES
   middleman-imageoptim (~> 0.0.4)
   middleman-minify-html
   middleman-syntax
+  rake
   redcarpet
