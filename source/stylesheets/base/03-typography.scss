@@ -7,11 +7,11 @@
 
   @font-face {
     font-family: 'rockwell';
-    src: font-url('rockwell/rock-webfont.eot');
-    src: font-url('rockwell/rock-webfont.eot?#iefix') format('embedded-opentype'),
-         font-url('rockwell/rock-webfont.woff') format('woff'),
-         font-url('rockwell/rock-webfont.ttf') format('truetype'),
-         font-url('rockwell/rock-webfont.svg#RockwellRegular') format('svg');
+    src: url('../fonts/rockwell/rock-webfont.eot');
+    src: url('../fonts/rockwell/rock-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/rockwell/rock-webfont.woff') format('woff'),
+         url('../fonts/rockwell/rock-webfont.ttf') format('truetype'),
+         url('../fonts/rockwell/rock-webfont.svg#RockwellRegular') format('svg');
     font-weight: normal;
     font-style: normal;
   }
