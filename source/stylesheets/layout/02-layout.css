@@ -135,6 +135,7 @@
     display: block;
     float:right;
     margin-bottom: 2.7em;
+    width: 100%;
   }
 
   footer img{
@@ -148,7 +149,7 @@
     display: right;
     float: right;
     margin-left: 24px;
-    height: 1.8em;
+    height: 1.8em;    
   }
 
 
